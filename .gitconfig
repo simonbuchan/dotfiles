@@ -1,0 +1,22 @@
+[user]
+	name = Simon Buchan
+	email = simon.buchan@skilitics.com
+[include]
+	local = ./.gitconfig.local
+[core]
+	autocrlf = input
+	whitespace = cr-at-eol
+	editor = vim
+[push]
+	default = current
+[alias]
+	st = status --short
+	co = checkout
+	glog = log --graph --decorate --oneline
+[advise]
+	detachedhead = false
+[branch]
+	autosetupmerge = false
+[color]
+	ui = auto
+
