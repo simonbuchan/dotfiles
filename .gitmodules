@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/vim-json"]
 	path = .vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
+[submodule "/home/sbuchan/.vim/bundle/vim-flavored-markdown"]
+	path = /home/sbuchan/.vim/bundle/vim-flavored-markdown
+	url = git://github.com/jtratner/vim-flavored-markdown.git
