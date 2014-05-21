@@ -2,7 +2,7 @@
 	name = Simon Buchan
 	email = simon.buchan@skilitics.com
 [include]
-	local = ./.gitconfig.local
+	path = ./.gitconfig.local
 [core]
 	autocrlf = input
 	whitespace = cr-at-eol
@@ -12,11 +12,13 @@
 [alias]
 	st = status --short
 	co = checkout
-	glog = log --graph --decorate --oneline
+	glog = log --graph --decorate --oneline --branches
 [advise]
 	detachedhead = false
 [branch]
 	autosetupmerge = false
 [color]
 	ui = auto
+[mergetool]
+	keepbackup = false
 
