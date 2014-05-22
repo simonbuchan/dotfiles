@@ -29,7 +29,7 @@ set autoread                    " reload changed files
 set autoindent smartindent smarttab " smart indenting
 set hlsearch                    " highlight incremental search matches
 set ignorecase                  " incremental search ignores case
-set autochdir                   " change directory to opened file
+"set autochdir                   " change directory to opened file
 set clipboard=unnamed           " copy and paste from windows clipboard
 
 " enable Pathogen plugin manager (can't put comment after execute)
@@ -38,7 +38,7 @@ execute pathogen#infect()
 filetype plugin indent on       " enable filetype detection
 syntax on                       " enable syntax highlighting
 
-au BufRead,BufNewFile *.as set filetype=actionscript " AS3 syntax
+au BufRead,BufNewFile *.as setl filetype=actionscript noexpandtab " AS3 syntax
 au BufNewFile,BufReadPost *.html,*.js,*.coffee,*.rb setl tabstop=2 shiftwidth=2 expandtab " default tabs for CoffeeScript
 
 " Minntty cursor changes
