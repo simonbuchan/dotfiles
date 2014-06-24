@@ -1,24 +1,51 @@
 [user]
 	name = Simon Buchan
 	email = simon.buchan@skilitics.com
+
 [include]
 	path = ./.gitconfig.local
+
 [core]
 	autocrlf = input
 	whitespace = cr-at-eol
 	editor = vim
+
 [push]
 	default = current
+
 [alias]
 	st = status --short
 	co = checkout
-	glog = log --graph --decorate --oneline --branches
+	glog = log --graph --oneline --all
+	amend = commit --amend
+
 [advise]
 	detachedhead = false
-[branch]
-	autosetupmerge = false
+
 [color]
 	ui = auto
+
+[status]
+	branch = true
+
+[log]
+	decorate = short
+
 [mergetool]
 	keepbackup = false
 
+[merge]
+	conflictstyle = diff3
+	renormalize = true
+
+[rebase]
+	stat = true
+	autosquash = true
+	autostash = true
+
+[column]
+	ui = auto
+
+[diff]
+	mnemonicprefix = true
+	submodule = log
