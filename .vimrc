@@ -26,7 +26,7 @@ set directory=~/.vim/swap//
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 set autoread                    " reload changed files
-set autoindent smartindent smarttab " smart indenting
+set autoindent smarttab         " smart indenting
 set hlsearch                    " highlight incremental search matches
 set ignorecase                  " incremental search ignores case
 "set autochdir                   " change directory to opened file
