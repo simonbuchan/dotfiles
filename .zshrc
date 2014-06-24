@@ -52,24 +52,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 unsetopt autocd
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Breaks completion. Screw you amazon.
-#source aws_zsh_completer.sh
+if [ -e ~/.profile ]; then
+    . ~/.profile
+fi
 
 # http://paulgoscicki.com/archives/2012/09/vi-mode-indicator-in-zsh-prompt/
 vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
