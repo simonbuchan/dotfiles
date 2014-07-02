@@ -14,8 +14,10 @@ set number                      " line numbers
 set nohidden                    " throw away closed buffers
 set scrolloff=10                " keep cursor away from top and bottom
 set relativenumber              " line numbers relative to current line
-"set cursorline                  " highlight current line
-"highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE " without breaking styling
+set cursorline                  " highlight current line
+set nowrap                      " wrap sucks.
+
+set ttimeoutlen=100             " TTY codes quickly timeout
 
 " Put backups in a common place
 set backup
@@ -32,14 +34,20 @@ set ignorecase                  " incremental search ignores case
 "set autochdir                   " change directory to opened file
 set clipboard=unnamed           " copy and paste from windows clipboard
 
+set t_Co=16                     " 16 color terminal
+
 " enable Pathogen plugin manager (can't put comment after execute)
 execute pathogen#infect()
 
 filetype plugin indent on       " enable filetype detection
 syntax on                       " enable syntax highlighting
 
-au BufRead,BufNewFile *.as setl filetype=actionscript noexpandtab " AS3 syntax
-au BufNewFile,BufReadPost *.html,*.js,*.coffee,*.rb setl tabstop=2 shiftwidth=2 expandtab " default tabs for CoffeeScript
+let g:solarized_contrast="high"
+
+colorscheme solarized
+
+autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript " Use AS3 for .as, not 'atlas' buitlin 
+autocmd BufNewFile,BufReadPost html,javascript,css,scss,ruby setl tabstop=2 shiftwidth=2 expandtab " tabs for webby-languages
 
 " Minntty cursor changes
 "let &t_ti.="\e[1 q"
@@ -53,9 +61,15 @@ au BufNewFile,BufReadPost *.html,*.js,*.coffee,*.rb setl tabstop=2 shiftwidth=2 
 "noremap <Esc>O[ <Esc>
 "noremap! <Esc>O[ <C-c>
 
+" Replace crazy Ex mode Q normally uses with gwap:
+" gw<motion>: reformat <motion> without moving cursor
+" ap: current 'paragraph'
+nmap Q gwap
+
 let g:netrw_banner = 0
 let g:netrw_preview   = 1
 let g:netrw_winsize   = 30
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
