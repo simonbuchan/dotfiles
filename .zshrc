@@ -57,8 +57,8 @@ if [ -e ~/.profile ]; then
 fi
 
 # http://paulgoscicki.com/archives/2012/09/vi-mode-indicator-in-zsh-prompt/
-vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
+vim_ins_mode="%{$fg[cyan]%}> %{$reset_color%}"
+vim_cmd_mode="%{$fg[yellow]%}> %{$reset_color%}"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
@@ -89,25 +89,7 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX$REF$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-# Fix dirty flag with git config status.branch set
-parse_git_dirty() {
-  local FLAGS='--short'
-  local STATUS=''
-  if [[ $POST_1_7_2_GIT -gt 0 ]]; then
-    FLAGS='--porcelain --ignore-submodules=dirty'
-  fi
-  if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
-    FLAGS+=' -uno'
-  fi
-  STATUS=$(command git status $FLAGS 2> /dev/null | tail -n1)
-  if [[ -n $STATUS ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
-  else
-    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
-  fi
-}
-
-PROMPT='${vim_mode}> '
+PROMPT='${vim_mode}'
 RPROMPT='%~$(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="‖"
