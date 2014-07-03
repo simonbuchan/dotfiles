@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="kardan"
+# ZSH_THEME="kardan"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -45,7 +45,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode git ruby rake node npm bower python pip z zsh_reload)
+plugins=(vi-mode ruby rake node npm bower python pip z zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,6 +80,38 @@ function TRAPINT() {
   return $(( 128 + $1 ))
 }
 
+# get the name of the branch we are on
+function git_prompt_info() {
+  local REF=$(command git symbolic-ref HEAD --short 2> /dev/null)
+  REF=${REF:-$(command git describe --all --always --long 2> /dev/null)}
+  if [[ -z $REF ]] return 0
+  REF=${REF#heads/}; REF=${REF#remotes/}
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$REF$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+# Fix dirty flag with git config status.branch set
+parse_git_dirty() {
+  local FLAGS='--short'
+  local STATUS=''
+  if [[ $POST_1_7_2_GIT -gt 0 ]]; then
+    FLAGS='--porcelain --ignore-submodules=dirty'
+  fi
+  if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
+    FLAGS+=' -uno'
+  fi
+  STATUS=$(command git status $FLAGS 2> /dev/null | tail -n1)
+  if [[ -n $STATUS ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+  else
+    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+  fi
+}
+
 PROMPT='${vim_mode}> '
-KEYTIMEOUT=1
+RPROMPT='%~$(git_prompt_info)'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="‖"
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+
+KEYTIMEOUT=10
 
