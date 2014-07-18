@@ -34,7 +34,7 @@ set ignorecase                  " incremental search ignores case
 "set autochdir                   " change directory to opened file
 set clipboard=unnamed           " copy and paste from windows clipboard
 
-set t_Co=16                     " 16 color terminal
+set t_Co=16                     " 16 color terminal is preferred for solarized (over 8 or 256)
 
 " enable Pathogen plugin manager (can't put comment after execute)
 execute pathogen#infect()
@@ -42,9 +42,9 @@ execute pathogen#infect()
 filetype plugin indent on       " enable filetype detection
 syntax on                       " enable syntax highlighting
 
-let g:solarized_contrast="high"
-
-colorscheme solarized
+if &g:term != 'win32'
+    colorscheme solarized
+endif
 
 autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript " Use AS3 for .as, not 'atlas' buitlin 
 autocmd BufNewFile,BufReadPost html,javascript,css,scss,ruby setl tabstop=2 shiftwidth=2 expandtab " tabs for webby-languages
