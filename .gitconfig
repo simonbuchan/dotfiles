@@ -19,8 +19,10 @@
 	glog = log --graph --oneline --all
 	amend = commit --amend
 
-[advise]
-	detachedhead = false
+[advice]
+	detachedHead = false
+	pushNonFastForward = false
+	statusHints = false
 
 [color]
 	ui = auto
