@@ -1,5 +1,18 @@
-/**
+# Ignore everything under the top-level directories
+/*/
+
+# And config files
+/.*
+
+# Except for vim config and bin files
 !/.vim
+!/bin
+
+# Except some vim state
 /.vim/backup
 /.vim/swap
+/.vim/.*
+
+# Stupid NPM
+npm-debug.log
 
