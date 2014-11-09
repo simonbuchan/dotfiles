@@ -16,7 +16,8 @@
 [alias]
 	st = status --short
 	co = checkout
-	glog = log --graph --oneline --all
+	g = log --graph --oneline
+	ga = log --graph --oneline --all
 	amend = commit --amend
 
 [advice]
