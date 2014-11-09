@@ -80,8 +80,7 @@ function TRAPINT() {
   return $(( 128 + $1 ))
 }
 
-# get the name of the branch we are on
-function git_prompt_info() {
+function git_describe_head() {
   local REF=$(command git symbolic-ref HEAD --short 2> /dev/null)
   REF=${REF:-$(command git describe --all --always --long 2> /dev/null)}
   if [[ -z $REF ]] return 0
