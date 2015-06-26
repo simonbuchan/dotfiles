@@ -24,10 +24,13 @@
 	url = git://github.com/jtratner/vim-flavored-markdown.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/cuviper/vim-colors-solarized.git
 [submodule ".vim/bundle/vim-vinegar"]
 	path = .vim/bundle/vim-vinegar
 	url = git://github.com/tpope/vim-vinegar.git
 [submodule ".vim/bundle/vim-editorconfig"]
 	path = .vim/bundle/vim-editorconfig
 	url = git://github.com/sgur/vim-editorconfig.git
+[submodule ".vim/bundle/YouCompleteMe"]
+	path = .vim/bundle/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
