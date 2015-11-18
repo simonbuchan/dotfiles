@@ -13,10 +13,19 @@ set showmode                    " show the current mode
 set number                      " line numbers
 set nohidden                    " throw away closed buffers
 set scrolloff=10                " keep cursor away from top and bottom
-set relativenumber              " line numbers relative to current line
-set cursorline                  " highlight current line
 set nowrap                      " wrap sucks.
 
+" Too slow in MSYS2/cygwin vim, for some reason
+if &g:term != 'cygwin'
+    set relativenumber              " line numbers relative to current line
+    set cursorline                  " highlight current line
+end
+if &g:term == 'win32'
+    set background=light
+    set nocursorline
+end
+
+set ttyfast
 set ttimeoutlen=100             " TTY codes quickly timeout
 
 " Put backups in a common place
@@ -46,8 +55,10 @@ if &g:term != 'win32'
     colorscheme solarized
 endif
 
-autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript " Use AS3 for .as, not 'atlas' buitlin 
-autocmd BufNewFile,BufReadPost html,javascript,css,scss,ruby setl tabstop=2 shiftwidth=2 expandtab " tabs for webby-languages
+" Use AS3 for .as, not 'atlas' built-in
+autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript
+" tabs for webby-languages
+autocmd FileType html,javascript,css,scss,ruby setl tabstop=2 shiftwidth=2 expandtab
 
 " Minntty cursor changes
 "let &t_ti.="\e[1 q"
