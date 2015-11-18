@@ -4,6 +4,16 @@
 # And config files
 /.*
 
+# And windows garbage
+/ntuser.ini
+/ntuser.dat*
+/NTUSER.DAT*
+
+# And localdb files
+/*.mdf
+/*_log.ldf
+/*.bak
+
 # Except for vim config and bin files
 !/.vim
 !/bin
