@@ -31,6 +31,3 @@
 [submodule ".vim/bundle/vim-editorconfig"]
 	path = .vim/bundle/vim-editorconfig
 	url = git://github.com/sgur/vim-editorconfig.git
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git

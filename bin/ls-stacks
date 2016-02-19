@@ -1,2 +1,6 @@
 #!/bin/sh
-aws cloudformation list-stacks --stack-status-filter=CREATE_COMPLETE --query 'StackSummaries[].StackName' --output text $@
+aws cloudformation list-stacks \
+	--query '*[].[StackName,StackStatus]' \
+	--output text \
+	$@ | \
+	fgrep -v DELETE_COMPLETE

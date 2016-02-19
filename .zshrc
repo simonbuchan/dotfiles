@@ -48,9 +48,11 @@ CASE_SENSITIVE="true"
 plugins=(
     vi-mode
 
+    aws
+
     git gitfast
 
-    ruby rake
+    ruby rake rbenv
     node npm
     bower
     python pip
@@ -108,3 +110,6 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 KEYTIMEOUT=10
 
+# [ -s "~/base16-solarized.dark.sh" ] && . "~/base16-solarized.dark.sh"
+
+[ -s "$HOME/.dnx/dnvm/dnvm.sh" ] && . "$HOME/.dnx/dnvm/dnvm.sh" # Load dnvm

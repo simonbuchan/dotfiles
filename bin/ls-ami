@@ -1,7 +1,7 @@
 #!/bin/sh
 
-WEB_IMAGE_NAME=Windows_Server-2012-RTM-English-64Bit-SQL_2012_SP1_Express
-DB_IMAGE_NAME=Windows_Server-2012-RTM-English-64Bit-Base
+DB_IMAGE_NAME=Windows_Server-2012-RTM-English-64Bit-SQL_2012_SP1_Express
+WEB_IMAGE_NAME=Windows_Server-2012-RTM-English-64Bit-Base
 
 aws ec2 describe-images --owners amazon \
     --filters Name=name,Values=$WEB_IMAGE_NAME-\*,$DB_IMAGE_NAME-\* \

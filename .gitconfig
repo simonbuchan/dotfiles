@@ -2,6 +2,9 @@
 	name = Simon Buchan
 	email = simon.buchan@skilitics.com
 
+[include]
+	path = ./.gitconfig.local
+
 [core]
 	autocrlf = input
 	whitespace = cr-at-eol
@@ -11,7 +14,7 @@
 	default = current
 
 [pull]
-	mode = ff-only
+	ff = only
 
 [alias]
 	st = status --short
@@ -20,6 +23,7 @@
 	ga = log --graph --oneline --all
 	amend = commit --amend
 	b = branch
+	merged = branch --merged
 
 [advice]
 	detachedHead = false
@@ -57,6 +61,3 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-
-[include]
-	path = ./.gitconfig.local
