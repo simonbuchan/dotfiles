@@ -1,7 +1,7 @@
 #!/bin/sh
 TAB='	'
 aws ec2 describe-instances \
-	--query 'Reservations[].Instances[][InstanceId,State.Name,PrivateIpAddress,Tags[?Key==`Name`]|[0].Value,Tags[?Key==`aws:cloudformation:stack-name`]|[0].Value]' \
+	--query 'Reservations[].Instances[][InstanceId,State.Name,PrivateIpAddress,Tags[?Key==`aws:cloudformation:stack-name`]|[0].Value,Tags[?Key==`Name`]|[0].Value]' \
 	--output text $@ | \
-	sort -n "-t$TAB" -k5 | \
+	sort -k4,5 | \
 	column -t "-s$TAB"

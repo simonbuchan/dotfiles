@@ -24,6 +24,7 @@
 	amend = commit --amend
 	b = branch
 	merged = branch --merged
+	eol = ls-files --eol
 
 [advice]
 	detachedHead = false

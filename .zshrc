@@ -12,7 +12,7 @@ ZSH=$HOME/.oh-my-zsh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -35,7 +35,7 @@ CASE_SENSITIVE="true"
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment following line if you want to  shown in the command execution time stamp 
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
@@ -71,8 +71,8 @@ if [ -e ~/.profile ]; then
 fi
 
 # http://paulgoscicki.com/archives/2012/09/vi-mode-indicator-in-zsh-prompt/
-vim_ins_mode="%{$fg[cyan]%}> %{$reset_color%}"
-vim_cmd_mode="%{$fg[yellow]%}> %{$reset_color%}"
+vim_ins_mode="%{$fg[cyan]%}"
+vim_cmd_mode="%{$fg[yellow]%}"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
@@ -94,22 +94,15 @@ function TRAPINT() {
   return $(( 128 + $1 ))
 }
 
-function git_describe_head() {
-  local REF=$(command git symbolic-ref HEAD --short 2> /dev/null)
-  REF=${REF:-$(command git describe --all --always --long 2> /dev/null)}
-  if [[ -z $REF ]] return 0
-  REF=${REF#heads/}; REF=${REF#remotes/}
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$REF$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-PROMPT='${vim_mode}'
-RPROMPT='%~$(git_prompt_info)'
+PROMPT='%{$fg[white]%}%1~ %? ${vim_mode}%# %{$reset_color%}'
+# RPROMPT='%~$(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}‖"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 KEYTIMEOUT=10
 
+unsetopt beep
+
 # [ -s "~/base16-solarized.dark.sh" ] && . "~/base16-solarized.dark.sh"
 
-[ -s "$HOME/.dnx/dnvm/dnvm.sh" ] && . "$HOME/.dnx/dnvm/dnvm.sh" # Load dnvm
