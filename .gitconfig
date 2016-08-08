@@ -57,6 +57,7 @@
 [diff]
 	mnemonicprefix = true
 	submodule = log
+	compactionHeuristic = true
 
 [filter "lfs"]
 	clean = git-lfs clean %f
