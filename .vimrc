@@ -58,8 +58,10 @@ syntax on                       " enable syntax highlighting
 "    colorscheme solarized
 "endif
 
+setl tabstop=4 shiftwidth=4 expandtab
+
 " Use AS3 for .as, not 'atlas' built-in
-autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript
+autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript noexpandtab
 " Use markdown for .md, not 'modula2' buitlin 
 autocmd BufNewFile,BufReadPost *.md setl filetype=markdown
 " tabs for webby-languages

@@ -53,6 +53,7 @@ plugins=(
     git gitfast
 
     ruby rake rbenv
+    bundler
     node npm
     bower
     python pip
@@ -94,8 +95,9 @@ function TRAPINT() {
   return $(( 128 + $1 ))
 }
 
-PROMPT='%{$fg[white]%}%1~ %? ${vim_mode}%# %{$reset_color%}'
+PROMPT='%{$fg[white]%}%j %1~ %? ${vim_mode}%# %{$reset_color%}'
 # RPROMPT='%~$(git_prompt_info)'
+unset RPROMPT
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}‖"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
