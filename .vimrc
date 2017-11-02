@@ -15,16 +15,6 @@ set nohidden                    " throw away closed buffers
 set scrolloff=10                " keep cursor away from top and bottom
 set nowrap                      " wrap sucks.
 
-" Too slow in MSYS2/cygwin vim, for some reason
-if &g:term != 'cygwin'
-    set relativenumber              " line numbers relative to current line
-    set cursorline                  " highlight current line
-end
-if &g:term == 'win32'
-    set background=light
-    set nocursorline
-end
-
 set ttyfast
 set ttimeoutlen=100             " TTY codes quickly timeout
 
@@ -58,7 +48,7 @@ syntax on                       " enable syntax highlighting
 "    colorscheme solarized
 "endif
 
-setl tabstop=4 shiftwidth=4 expandtab
+set tabstop=4 shiftwidth=4 expandtab
 
 " Use AS3 for .as, not 'atlas' built-in
 autocmd BufNewFile,BufReadPost *.as setl filetype=actionscript noexpandtab
